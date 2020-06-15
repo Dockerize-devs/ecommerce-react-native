@@ -20,9 +20,6 @@ function NotificationsScreen({ navigation }) {
 
 const Drawer = createDrawerNavigator();
 
-const HomeIcon = ({ color, size }) => <Ionicons name='ios-home' size={size} color={color} />
-const NotificationIcon = ({ color, size }) => <Ionicons name='ios-notifications' size={size} color={color} />
-const PersonIcon = ({ color, size }) => <Ionicons name='ios-person' size={size} color={color} />
 
 export default function App() {
   return (
