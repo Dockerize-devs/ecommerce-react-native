@@ -11,10 +11,10 @@ import NavigationIcons from '../components/common/NavigationIcons';
 import Colors from '../data/constants/Colors';
 
 
-function NotificationsScreen({ navigation }) {
+function SettingScreen({ navigation }) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Button onPress={() => navigation.goBack()} title="Go back home" />
+            <Button onPress={() => navigation.goBack()} title="Go back" />
         </View>
     );
 }
@@ -34,8 +34,8 @@ export default function App() {
             <Drawer.Screen name="Home" component={TabNavigator} options={{
                 drawerIcon: NavigationIcons.HomeIcon
             }} />
-            <Drawer.Screen name="Notifications" component={NotificationsScreen} options={{
-                drawerIcon: NavigationIcons.NotificationIcon
+            <Drawer.Screen name="Settings" component={SettingScreen} options={{
+                drawerIcon: NavigationIcons.SettingsIcon
             }} />
             <Drawer.Screen name="Login" component={LoginScreen} options={{
                 title: 'Account',
