@@ -1,12 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import NavigatorContainer from './navigators/NavigatorContainer';
+
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+  return <NavigatorContainer />;
 }
 
 const styles = StyleSheet.create({
