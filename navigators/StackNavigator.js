@@ -38,7 +38,6 @@ const customAppBar = ({ scene, previous, navigation }) => {
           ? options.title
           : scene.route.name;
 
-    console.log(navigation)
     return (
       <PaperAppBar
         title={title}

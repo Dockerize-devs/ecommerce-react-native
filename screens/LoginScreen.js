@@ -13,7 +13,7 @@ export default props => {
         <View style={styles.screen}>
             <View style={styles.logoArea}>
                 <View style={styles.logoBorder}>
-                    <Ionicons name='ios-chatbubbles' color='#3679E0' size={80} />
+                    <Ionicons name='ios-cart' color='#3679E0' size={80} />
                 </View>
             </View>
             <View style={styles.loginCardContainer}>
