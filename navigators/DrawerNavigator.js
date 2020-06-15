@@ -3,6 +3,7 @@ import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import TabNavigator from './TabNavigator'
+import LoginScreen from '../screens/LoginScreen';
 
 
 function NotificationsScreen({ navigation }) {
@@ -20,6 +21,7 @@ export default function App() {
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={TabNavigator} />
         <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+        <Drawer.Screen name="Login" component={LoginScreen} />
       </Drawer.Navigator>
   );
 }

@@ -1,26 +1,27 @@
 import * as React from 'react';
 import { Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '../screens/HomeScreen';
+import { Ionicons } from '@expo/vector-icons';
 
+import { HomeStackNavigator, WishlistStackNavigator } from './StackNavigator';
 
-
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
 
 const Tab = createBottomTabNavigator();
 
+const HomeIcon = ({ color, size }) => <Ionicons name='ios-home' size={size} color={color} />
+const WishlistIcon = ({ color, size }) => <Ionicons name='ios-heart' size={size} color={color} />
+
 export default () => {
   return (
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-      </Tab.Navigator>
+    <Tab.Navigator>
+      <Tab.Screen name="HomeStack" component={HomeStackNavigator} options={{
+        title: 'Home',
+        tabBarIcon: HomeIcon
+      }} />
+      <Tab.Screen name="Wishlist" component={WishlistStackNavigator} options={{
+        title: 'Wishlist',
+        tabBarIcon: WishlistIcon
+      }}/>
+    </Tab.Navigator>
   );
 }
