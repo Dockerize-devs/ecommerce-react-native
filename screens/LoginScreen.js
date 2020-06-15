@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { TextInput, Card, Title, Button, Text } from 'react-native-paper';
 import { StyleSheet, View, SafeAreaView, StatusBar } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import Colors from '../data/constants/Colors';
 
 export default props => {
     useEffect(
@@ -13,7 +14,7 @@ export default props => {
         <View style={styles.screen}>
             <View style={styles.logoArea}>
                 <View style={styles.logoBorder}>
-                    <Ionicons name='ios-cart' color='#3679E0' size={80} />
+                    <Ionicons name='ios-cart' color={Colors.primary} size={80} />
                 </View>
             </View>
             <View style={styles.loginCardContainer}>
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
         height: 450,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#3679E0'
+        backgroundColor: Colors.primary
     },
     logoBorder: {
         alignItems: 'center',
@@ -106,7 +107,7 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
         justifyContent: 'center',
         marginTop: 48,
-        backgroundColor: '#3679E0'
+        backgroundColor: Colors.primary
     },
     helpText: {
         marginTop: 50
