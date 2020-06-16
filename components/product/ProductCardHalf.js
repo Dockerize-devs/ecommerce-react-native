@@ -23,7 +23,7 @@ const ProductCardHalf = props => {
 
                     <View style={styles.priceSection}>
                         <View style={styles.priceMessage}>
-                            <Text style={{ ...styles.priceDropText, ...styles.priceDrop }}>PRICE DROP</Text>
+                            <Text style={{ ...styles.priceDropText, ...styles.priceDrop }}>PRICE DROP </Text>
                             <Text style={{ ...styles.priceDropValue, ...styles.priceDrop }}>EXTRA 15% OFF</Text>
                         </View>
                         <View style={styles.priceDeal}>
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     },
     oldPriceContainer: {
         width: '45%',
-        paddingVertical: 10,
+        paddingVertical: 5,
         paddingHorizontal: 5,
         alignItems: 'center',
         justifyContent: 'center'
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     newPriceContainer: {
-        paddingVertical: 10,
+        paddingVertical: 5,
         flex: 1,
         justifyContent: "center",
         flexDirection: 'row',
