@@ -11,7 +11,12 @@ export default ({ navigation }) => {
             <View style={styles.productsContainer}>
                 <View style={styles.header}>
                     <Title style={styles.title}>Winter Furniture Sale</Title>
-                    <Button style={styles.button} color={Colors.primary} mode='outlined'>Filter</Button>
+                    <Button
+                        onPress={() => navigation.navigate('Filters')}
+                        style={styles.button}
+                        color={Colors.primary}
+                        mode='outlined'
+                    >Filter</Button>
                 </View>
                 <View style={styles.products}>
                     <ProductCardHalf />
