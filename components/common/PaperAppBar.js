@@ -15,7 +15,7 @@ const PaperAppBar = props => {
 
 
     return (
-        <Appbar.Header statusBarHeight={40} dark={true} style={{
+        <Appbar.Header statusBarHeight={30} dark={true} style={{
             backgroundColor: Colors.primary
         }}>
             {leftButton}
