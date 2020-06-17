@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     title: {
-        fontSize: 25,
+        fontSize: 23,
         fontWeight: 'bold'
     },
     button: {
