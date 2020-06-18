@@ -4,18 +4,18 @@ import { Button, Text, Title, Divider, List } from 'react-native-paper';
 import Colors from '../data/constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 import AppTitle from '../components/typography/AppTitle';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { SORT_BY_MOST_POPULAR, SORT_BY_NEWEST, SORT_BY_LOWEST_PRICE, SORT_BY_HIGHEST_PRICE, SORT_BY_BIGGEST_SAVING } from '../models/ProductFilters';
+import { filtersUpdated } from '../store/actions/productAction';
 
 
 const FilterItem = props => {
     const { isActive } = props;
     // const [isActive, setIsActive] = useState(pisActive)
-    console.log('is_active', isActive);
 
     return (
         <Button
-            onPress={() => {}}
+            onPress={props.onPress}
             color={isActive ? 'white' : Colors.primary}
             style={{ ...styles.filterItem, ...{ backgroundColor: isActive ? Colors.primary : 'white' } }}
             mode='outlined'
@@ -31,7 +31,14 @@ export default props => {
     const [isOpenPrice, setIsOpenPrice] = useState(false);
     const [isOpenReview, setIsOpenReview] = useState(false);
 
+    const dispatch = useDispatch();
+
     const filters = useSelector(state => state.product.filters);
+    const onSortByChange = sort => {
+        let changedFilters = {...filters}
+        changedFilters.sort_by = sort; 
+        dispatch(filtersUpdated(changedFilters));
+    }
 
     return (
         <View style={styles.screen}>
@@ -44,11 +51,28 @@ export default props => {
                     <Title style={styles.filterTitle}>SORT BY</Title>
                     <Divider />
                     <View style={styles.filterItems}>
-                        <FilterItem isActive={filters.sort_by === SORT_BY_MOST_POPULAR}>Most Popular</FilterItem>
-                        <FilterItem isActive={filters.sort_by === SORT_BY_NEWEST}>Newly Added</FilterItem>
-                        <FilterItem isActive={filters.sort_by === SORT_BY_LOWEST_PRICE}>Lowest Price</FilterItem>
-                        <FilterItem isActive={filters.sort_by === SORT_BY_HIGHEST_PRICE}>Highest Price</FilterItem>
-                        <FilterItem isActive={filters.sort_by === SORT_BY_BIGGEST_SAVING}>Biggest Saving</FilterItem>
+                        <FilterItem
+                            isActive={filters.sort_by === SORT_BY_MOST_POPULAR}
+                            onPress={() => onSortByChange(SORT_BY_MOST_POPULAR)}
+                        >Most Popular</FilterItem>
+
+                        <FilterItem
+                            isActive={filters.sort_by === SORT_BY_NEWEST}
+                            onPress={() => onSortByChange(SORT_BY_NEWEST)}
+                        >Newly Added</FilterItem>
+
+                        <FilterItem
+                            isActive={filters.sort_by === SORT_BY_LOWEST_PRICE}
+                            onPress={() => onSortByChange(SORT_BY_LOWEST_PRICE)}
+                        >Lowest Price</FilterItem>
+                        <FilterItem
+                            isActive={filters.sort_by === SORT_BY_HIGHEST_PRICE}
+                            onPress={() => onSortByChange(SORT_BY_HIGHEST_PRICE)}
+                        >Highest Price</FilterItem>
+                        <FilterItem
+                            isActive={filters.sort_by === SORT_BY_BIGGEST_SAVING}
+                            onPress={() => onSortByChange(SORT_BY_BIGGEST_SAVING)}
+                        >Biggest Saving</FilterItem>
                     </View>
                 </View>
                 <View style={styles.filter}>
@@ -98,7 +122,7 @@ export default props => {
             </View>
             <View style={styles.actionArea}>
                 <Button
-                    onPress={props.navigation.goBack}
+                    onPress={() => props.navigation.navigate('Home')}
                     style={styles.applyFilterBtn}
                     mode='outlined'
                     color={Colors.primary}>

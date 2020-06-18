@@ -1,5 +1,6 @@
 import ProductService from "../../services/ProductService";
 import ProductFilters from "../../models/ProductFilters";
+import { FILTERS_UPDATED } from '../actions/productAction'
 
 const initialState = {
     products: [],
@@ -8,8 +9,21 @@ const initialState = {
 
 const productReducer = (state = initialState, action) => {
 
-    state.products = ProductService.getAllProducts(state.filters)
-    return state;
+    switch (action.type) {
+        case FILTERS_UPDATED:
+            const newState = {
+                products: ProductService.getAllProducts(action.filters),
+                filters: { ...action.filters }
+            }
+            console.log(action);
+            return newState;
+        default:
+            return {
+                ...state,
+                products: ProductService.getAllProducts(state.filters)
+            }
+    }
+
 }
 
 export default productReducer;
