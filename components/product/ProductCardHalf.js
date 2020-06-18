@@ -23,21 +23,23 @@ const ProductCardHalf = props => {
                 <Card.Content style={styles.content}>
                     <View style={styles.titleContainer}>
                         <Title style={styles.title}>{product.name}</Title>
-                        <Subheading style={styles.subTitle}>Salesbay</Subheading>
+                        <Subheading style={styles.subTitle}>{product.shop_name}</Subheading>
                     </View>
 
                     <View style={styles.priceSection}>
                         <View style={styles.priceMessage}>
                             <Text style={{ ...styles.priceDropText, ...styles.priceDrop }}>PRICE DROP </Text>
-                            <Text style={{ ...styles.priceDropValue, ...styles.priceDrop }}>EXTRA 15% OFF</Text>
+                            <Text style={{ ...styles.priceDropValue, ...styles.priceDrop }}>
+                                EXTRA {product.price_drop_percentage}% OFF
+                            </Text>
                         </View>
                         <View style={styles.priceDeal}>
                             <View style={styles.oldPriceContainer}>
-                                <Text style={styles.oldPrice}>$625.90</Text>
+                                <Text style={styles.oldPrice}>$ {product.previous_price} </Text>
                             </View>
                             <View style={styles.newPriceContainer}>
                                 <Text style={styles.newPrice}>$</Text>
-                                <Text style={styles.newPriceValue}>532</Text>
+                                <Text style={styles.newPriceValue}>{product.current_price}</Text>
                                 <Text style={styles.newPrice}>01</Text>
                             </View>
                         </View>
