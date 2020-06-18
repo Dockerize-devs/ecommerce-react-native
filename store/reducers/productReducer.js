@@ -1,10 +1,14 @@
 import ProductService from "../../services/ProductService";
+import ProductFilters from "../../models/ProductFilters";
 
 const initialState = {
-    products: ProductService.getAllProducts()
+    products: [],
+    filters: new ProductFilters(),
 }
 
 const productReducer = (state = initialState, action) => {
+
+    state.products = ProductService.getAllProducts(state.filters)
     return state;
 }
 

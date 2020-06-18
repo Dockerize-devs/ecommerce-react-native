@@ -4,14 +4,18 @@ import { Button, Text, Title, Divider, List } from 'react-native-paper';
 import Colors from '../data/constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 import AppTitle from '../components/typography/AppTitle';
+import { useSelector } from 'react-redux';
+import { SORT_BY_MOST_POPULAR, SORT_BY_NEWEST, SORT_BY_LOWEST_PRICE, SORT_BY_HIGHEST_PRICE, SORT_BY_BIGGEST_SAVING } from '../models/ProductFilters';
 
 
 const FilterItem = props => {
-    const { pisActive } = props;
-    const [isActive, setIsActive] = useState(pisActive)
+    const { isActive } = props;
+    // const [isActive, setIsActive] = useState(pisActive)
+    console.log('is_active', isActive);
+
     return (
         <Button
-            onPress={() => setIsActive(!isActive)}
+            onPress={() => {}}
             color={isActive ? 'white' : Colors.primary}
             style={{ ...styles.filterItem, ...{ backgroundColor: isActive ? Colors.primary : 'white' } }}
             mode='outlined'
@@ -27,6 +31,8 @@ export default props => {
     const [isOpenPrice, setIsOpenPrice] = useState(false);
     const [isOpenReview, setIsOpenReview] = useState(false);
 
+    const filters = useSelector(state => state.product.filters);
+
     return (
         <View style={styles.screen}>
             <View style={styles.headerContainer}>
@@ -38,11 +44,11 @@ export default props => {
                     <Title style={styles.filterTitle}>SORT BY</Title>
                     <Divider />
                     <View style={styles.filterItems}>
-                        <FilterItem isActive={true}>Most Popular</FilterItem>
-                        <FilterItem>Newly Added</FilterItem>
-                        <FilterItem>Lowest Price</FilterItem>
-                        <FilterItem>Highest Price</FilterItem>
-                        <FilterItem>Biggest Saving</FilterItem>
+                        <FilterItem isActive={filters.sort_by === SORT_BY_MOST_POPULAR}>Most Popular</FilterItem>
+                        <FilterItem isActive={filters.sort_by === SORT_BY_NEWEST}>Newly Added</FilterItem>
+                        <FilterItem isActive={filters.sort_by === SORT_BY_LOWEST_PRICE}>Lowest Price</FilterItem>
+                        <FilterItem isActive={filters.sort_by === SORT_BY_HIGHEST_PRICE}>Highest Price</FilterItem>
+                        <FilterItem isActive={filters.sort_by === SORT_BY_BIGGEST_SAVING}>Biggest Saving</FilterItem>
                     </View>
                 </View>
                 <View style={styles.filter}>
