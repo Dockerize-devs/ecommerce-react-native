@@ -44,6 +44,11 @@ export default props => {
         changedFilters.price = price;
         dispatch(filtersUpdated(changedFilters));
     }
+    const onReviewChange = review => {
+        let changedFilters = { ...filters }
+        changedFilters.review = review;
+        dispatch(filtersUpdated(changedFilters));
+    }
 
     return (
         <View style={styles.screen}>
@@ -114,13 +119,32 @@ export default props => {
                         onPress={() => setIsOpenPrice(!isOpenPrice)}
                     >
                         <View style={styles.filterItems}>
-                            <FilterItem>ANY <Text style={styles.productCount}>(14)</Text></FilterItem>
-                            <FilterItem> ★★★★★ <Text style={styles.productCount}>(14)</Text></FilterItem>
-                            <FilterItem isActive={true}>★★★★ <Text style={styles.productCount}>(7)</Text></FilterItem>
-                            <FilterItem>★★★ <Text style={styles.productCount}>(11)</Text></FilterItem>
-                            <FilterItem>★★ <Text style={styles.productCount}>(11)</Text></FilterItem>
-                            <FilterItem>★ <Text style={styles.productCount}>(11)</Text></FilterItem>
-                            
+                            <FilterItem
+                                isActive={filters.review === 'any'}
+                                onPress={() => onReviewChange('any')}
+                            >ANY</FilterItem>
+
+                            <FilterItem
+                                isActive={filters.review === 5}
+                                onPress={() => onReviewChange(5)}
+                            >★★★★★</FilterItem>
+
+                            <FilterItem
+                                isActive={filters.review === 4}
+                                onPress={() => onReviewChange(4)}
+                            >★★★★</FilterItem>
+                            <FilterItem
+                                isActive={filters.review === 3}
+                                onPress={() => onReviewChange(3)}
+                            >★★★</FilterItem>
+                            <FilterItem
+                                isActive={filters.review === 2}
+                                onPress={() => onReviewChange(2)}
+                            >★★</FilterItem>
+                            <FilterItem
+                                isActive={filters.review === 1}
+                                onPress={() => onReviewChange(1)}
+                            >★</FilterItem>
                         </View>
                     </List.Accordion>
                 </View>
