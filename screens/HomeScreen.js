@@ -11,7 +11,7 @@ export default ({ navigation }) => {
 
     const header = (
         <View style={styles.header}>
-            <Title style={styles.title}>Winter Furniture Sale</Title>
+            <Title style={styles.title}>Winter Smartphone Sale</Title>
             <Button
                 onPress={() => navigation.navigate('Filters')}
                 style={styles.button}

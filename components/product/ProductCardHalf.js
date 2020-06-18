@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types'
+import { View, StyleSheet, Image } from 'react-native';
 import {
     Card,
     Button,
@@ -8,16 +9,20 @@ import {
     Text
 } from 'react-native-paper';
 import Colors from '../../data/constants/Colors'
+import Product from '../../models/Product';
 
 const ProductCardHalf = props => {
+    const { product } = props;
+
     return (
         <View style={styles.container}>
             <Card>
-                <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+                {/* <Card.Cover style={{height: 140}} resizeMode='cover' source={{ uri: product.cover_image }} /> */}
+                <Image style={styles.cover} resizeMode='contain' source={{ uri: product.cover_image }} />
 
                 <Card.Content style={styles.content}>
                     <View style={styles.titleContainer}>
-                        <Title style={styles.title}>2m Grey Linen Fabric 3 Seater Pullout Sofa...</Title>
+                        <Title style={styles.title}>{product.name}</Title>
                         <Subheading style={styles.subTitle}>Salesbay</Subheading>
                     </View>
 
@@ -60,13 +65,17 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 14,
         lineHeight: 20,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        height: 40
     },
     subTitle: {
         fontSize: 13,
         textAlign: "center",
         textDecorationLine: "underline",
         marginTop: -3
+    },
+    cover: {
+        height: 150,
     },
     priceSection: {
         marginTop: 22
@@ -121,5 +130,9 @@ const styles = StyleSheet.create({
         fontSize: 20,
     }
 });
+
+ProductCardHalf.propTypes = {
+    product: PropTypes.instanceOf(Product)
+};
 
 export default ProductCardHalf; 
