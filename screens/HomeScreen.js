@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
-import { View, StyleSheet, ScrollView, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 import { Title, Button } from 'react-native-paper';
 import ProductCardHalf from '../components/product/ProductCardHalf';
 import Colors from '../data/constants/Colors';
-import ProductsData from '../data/dummy/Products';
 import { useSelector } from 'react-redux';
 
 
@@ -11,9 +10,6 @@ import { useSelector } from 'react-redux';
 export default ({ navigation }) => {
 
     const products = useSelector(state => state.product.products);
-    useEffect(() => {
-        console.log('Updated PPP')
-    }, [products])
 
     const header = (
         <View style={styles.header}>

@@ -15,7 +15,6 @@ const productReducer = (state = initialState, action) => {
                 products: ProductService.getAllProducts(action.filters),
                 filters: { ...action.filters }
             }
-            console.log(action);
             return newState;
         default:
             return {

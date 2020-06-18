@@ -35,8 +35,13 @@ export default props => {
 
     const filters = useSelector(state => state.product.filters);
     const onSortByChange = sort => {
-        let changedFilters = {...filters}
-        changedFilters.sort_by = sort; 
+        let changedFilters = { ...filters }
+        changedFilters.sort_by = sort;
+        dispatch(filtersUpdated(changedFilters));
+    }
+    const onPriceChange = price => {
+        let changedFilters = { ...filters }
+        changedFilters.price = price;
         dispatch(filtersUpdated(changedFilters));
     }
 
@@ -77,28 +82,27 @@ export default props => {
                 </View>
                 <View style={styles.filter}>
                     <List.Accordion
-                        title={<Title style={styles.filterTitle}>PRICE</Title>}
+                        title={<Title style={styles.filterTitle}>Price</Title>}
                         expanded={isOpenReview}
                         onPress={() => setIsOpenReview(!isOpenReview)}
                     >
                         <View style={styles.filterItems}>
-                            <FilterItem>$$ <Text style={styles.productCount}>(14)</Text></FilterItem>
-                            <FilterItem isActive={true}>$$$ <Text style={styles.productCount}>(7)</Text></FilterItem>
-                            <FilterItem>$$$$$ <Text style={styles.productCount}>(11)</Text></FilterItem>
-                        </View>
-                    </List.Accordion>
-                    <Divider />
-                </View>
-                <View style={styles.filter}>
-                    <List.Accordion
-                        title={<Title style={styles.filterTitle}>SHOP</Title>}
-                        expanded={isOpenReview}
-                        onPress={() => setIsOpenReview(!isOpenReview)}
-                    >
-                        <View style={styles.filterItems}>
-                            <FilterItem>$$ <Text style={styles.productCount}>(14)</Text></FilterItem>
-                            <FilterItem isActive={true}>$$$ <Text style={styles.productCount}>(7)</Text></FilterItem>
-                            <FilterItem>$$$$$ <Text style={styles.productCount}>(11)</Text></FilterItem>
+                            <FilterItem
+                                isActive={filters.price === '$'}
+                                onPress={() => onPriceChange('$')}
+                            >$<Text style={styles.productCount}></Text></FilterItem>
+                            <FilterItem
+                                isActive={filters.price === '$$'}
+                                onPress={() => onPriceChange('$$')}
+                            >$$<Text style={styles.productCount}></Text></FilterItem>
+                            <FilterItem
+                                isActive={filters.price === '$$$'}
+                                onPress={() => onPriceChange('$$$')}
+                            >$$$<Text style={styles.productCount}></Text></FilterItem>
+                            <FilterItem
+                                isActive={filters.price === '$$$$'}
+                                onPress={() => onPriceChange('$$$$')}
+                            >$$$$<Text style={styles.productCount}></Text></FilterItem>
                         </View>
                     </List.Accordion>
                     <Divider />
@@ -116,6 +120,7 @@ export default props => {
                             <FilterItem>★★★ <Text style={styles.productCount}>(11)</Text></FilterItem>
                             <FilterItem>★★ <Text style={styles.productCount}>(11)</Text></FilterItem>
                             <FilterItem>★ <Text style={styles.productCount}>(11)</Text></FilterItem>
+                            
                         </View>
                     </List.Accordion>
                 </View>

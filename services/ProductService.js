@@ -32,6 +32,10 @@ export default {
             default:
         }
 
+        if(filters.price) {
+            products = products.filter(p => p.price_tag === filters.price)
+        }
+
         return products;
     },
 }
