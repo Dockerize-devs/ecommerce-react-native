@@ -58,7 +58,7 @@ export default props => {
             </View>
             <View style={styles.filtersContainer}>
                 <View style={styles.filter}>
-                    <Title style={styles.filterTitle}>SORT BY</Title>
+                    <Title style={{...styles.filterTitle, marginLeft: 10}}>Sort By</Title>
                     <Divider />
                     <View style={styles.filterItems}>
                         <FilterItem
@@ -87,7 +87,7 @@ export default props => {
                 </View>
                 <View style={styles.filter}>
                     <List.Accordion
-                        title={<Title style={styles.filterTitle}>Price</Title>}
+                        title={<Title style={styles.filterTitle}>Price Tag</Title>}
                         expanded={isOpenReview}
                         onPress={() => setIsOpenReview(!isOpenReview)}
                     >
@@ -114,7 +114,7 @@ export default props => {
                 </View>
                 <View style={styles.filter}>
                     <List.Accordion
-                        title={<Title style={styles.filterTitle}>REVIEW</Title>}
+                        title={<Title style={styles.filterTitle}>Minimum Review Score</Title>}
                         expanded={isOpenPrice}
                         onPress={() => setIsOpenPrice(!isOpenPrice)}
                     >
