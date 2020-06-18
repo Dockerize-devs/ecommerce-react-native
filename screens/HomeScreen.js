@@ -4,10 +4,12 @@ import { Title, Button } from 'react-native-paper';
 import ProductCardHalf from '../components/product/ProductCardHalf';
 import Colors from '../data/constants/Colors';
 import ProductsData from '../data/dummy/Products';
+import { useSelector } from 'react-redux';
+
 
 
 export default ({ navigation }) => {
-    const products = ProductsData;
+    const products = useSelector(state => state.product.products);
 
     const header = (
         <View style={styles.header}>
