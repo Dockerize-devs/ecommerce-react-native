@@ -4,8 +4,15 @@ import Navigator from './navigators/NavigatorContainer';
 import { Provider } from 'react-native-paper';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
+import { createStore, combineReducers } from 'redux';
+import { Provider as ReduxProvider } from 'react-redux';
+import productReducer from './store/reducers/productReducer';
 // import { enableScreens } from 'react-native-screens';
 
+
+const store = createStore(combineReducers({
+  product: productReducer
+}))
 
 // enableScreens();
 
@@ -26,5 +33,5 @@ export default function App() {
       onFinish={() => setFontLoaded(true)}
     />
   }
-  return <Provider><Navigator /></Provider> ;
+  return  <Provider><ReduxProvider store={store}><Navigator /></ReduxProvider></Provider>;
 }
