@@ -1,35 +1,34 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView, FlatList } from 'react-native';
 import { Title, Button } from 'react-native-paper';
 import ProductCardHalf from '../components/product/ProductCardHalf';
 import Colors from '../data/constants/Colors';
+import ProductsData from '../data/dummy/Products';
 
 
 export default ({ navigation }) => {
-    return (
-        <ScrollView>
-            <View style={styles.productsContainer}>
-                <View style={styles.header}>
-                    <Title style={styles.title}>Winter Furniture Sale</Title>
-                    <Button
-                        onPress={() => navigation.navigate('Filters')}
-                        style={styles.button}
-                        color={Colors.primary}
-                        mode='outlined'
-                    >Filter</Button>
-                </View>
-                <View style={styles.products}>
-                    <ProductCardHalf />
-                    <ProductCardHalf />
-                    <ProductCardHalf />
-                    <ProductCardHalf />
-                    <ProductCardHalf />
-                    <ProductCardHalf />
-                    <ProductCardHalf />
-                </View>
-            </View>
-        </ScrollView>
+    const products = ProductsData;
+
+    const header = (
+        <View style={styles.header}>
+            <Title style={styles.title}>Winter Furniture Sale</Title>
+            <Button
+                onPress={() => navigation.navigate('Filters')}
+                style={styles.button}
+                color={Colors.primary}
+                mode='outlined'
+            >Filter</Button>
+        </View>
     );
+
+    return (
+        <FlatList
+            ListHeaderComponent={header}
+            numColumns={2}
+            data={products}
+            keyExtractor={item => item.id.toString()}
+            renderItem={({ item }) => <ProductCardHalf product={item} />}
+        />)
 }
 
 const styles = StyleSheet.create({
