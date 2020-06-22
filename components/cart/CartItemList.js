@@ -11,7 +11,8 @@ export default props => {
         <View style={styles.screen}>
             <Text>2 item(s) in your bag</Text>
             <CartItem />
-            <CartItem />
+            {/* <CartItem /> */}
+            {/* <CartItem /> */}
             <View style={styles.cost}>
                 <Text style={styles.costText}>Total MRP</Text>
                 <Text style={styles.costValue}>$2798</Text>

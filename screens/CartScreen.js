@@ -10,7 +10,7 @@ import Colors from '../data/constants/Colors';
 export default ({ navigation }) => {
   return (
     <View style={styles.screen}>
-      <ScrollView style={{marginBottom: 120}} >
+      <ScrollView showsVerticalScrollIndicator={ false } style={{marginBottom: 110}} >
         <DeliveryZipSearch />
         <GiftOffer />
         <ItemList />
