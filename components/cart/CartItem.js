@@ -38,9 +38,9 @@ export default props => {
                             onDismiss={() => setShowColors(false)}
                             anchor={<Anchor text='Red' onPress={() => setShowColors(true)} />}
                         >
-                            <Menu.Item onPress={() => { }} title='red'></Menu.Item>
-                            <Menu.Item onPress={() => { }} title='red'>Green</Menu.Item>
-                            <Menu.Item onPress={() => { }} title='red'>Black</Menu.Item>
+                            <Menu.Item onPress={() => { }} title='Red'></Menu.Item>
+                            <Menu.Item onPress={() => { }} title='White'>Green</Menu.Item>
+                            <Menu.Item onPress={() => { }} title='Black'>Black</Menu.Item>
                         </Menu>
                     </View>
                     <View style={styles.colorAttr}>
@@ -87,6 +87,8 @@ const styles = StyleSheet.create({
     },
     thumbnail: {
         width: '30%',
+        marginTop: 10,
+        marginRight: 10
     },
     thumbnailImage: {
         height: 100
@@ -112,7 +114,11 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     price: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        alignItems: "center"
+    },
+    priceText: {
+        fontSize: 23
     },
     actions: {
         flexGrow: 1,
