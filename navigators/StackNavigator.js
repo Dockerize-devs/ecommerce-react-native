@@ -5,6 +5,7 @@ import HomeScreen from '../screens/HomeScreen';
 import WishListScreen from '../screens/WishListScreen';
 import PaperAppBar from '../components/common/PaperAppBar'
 import FiltersScreen from '../screens/FiltersScreen';
+import CartScreen from '../screens/CartScreen';
 
 
 const Stack = createStackNavigator();
@@ -26,6 +27,16 @@ export const WishlistStackNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Wishlist" component={WishListScreen} options={{
+        header: customAppBar
+      }} />
+    </Stack.Navigator>
+  );
+}
+
+export const CartStackNavigator = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Cart" component={ CartScreen } options={{
         header: customAppBar
       }} />
     </Stack.Navigator>

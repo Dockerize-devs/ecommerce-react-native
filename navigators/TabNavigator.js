@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
-import { HomeStackNavigator, WishlistStackNavigator } from './StackNavigator';
+import { HomeStackNavigator, WishlistStackNavigator, CartStackNavigator } from './StackNavigator';
 import CartScreen from '../screens/CartScreen';
 import NavigationIcons from '../components/common/NavigationIcons';
 import Colors from '../data/constants/Colors';
@@ -22,11 +22,11 @@ export default () => {
         title: 'Home',
         tabBarIcon: NavigationIcons.HomeIcon
       }} />
-      <Tab.Screen name="Wishlist" component={WishlistStackNavigator} options={{
+      <Tab.Screen name="WishlistStack" component={WishlistStackNavigator} options={{
         title: 'Wishlist',
         tabBarIcon: NavigationIcons.WishlistIcon
       }} />
-      <Tab.Screen name="Cart" component={CartScreen} options={{
+      <Tab.Screen name="CartStack" component={ CartStackNavigator } options={{
         title: 'Cart',
         tabBarIcon: NavigationIcons.CartIcon
       }} />

@@ -1,10 +1,16 @@
 import React from 'react';
-import { View, Button, Text } from 'react-native';
+import { View } from 'react-native';
+import DeliveryZipSearch from '../components/cart/DeliveryZipSearch';
+import GiftOffer from '../components/cart/GiftOffer';
+import ItemList from '../components/cart/CartItemList';
 
-export default ({ navigation }) =>  {
+
+export default ({ navigation }) => {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Cart!</Text>
-      </View>
+        <View style={{ flex: 1, margin: 15}}>
+            <DeliveryZipSearch />
+            <GiftOffer />
+            <ItemList />
+        </View>
     );
-  }
+}
