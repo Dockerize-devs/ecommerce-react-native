@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Text, Divider, Title } from 'react-native-paper';
+import { Text, Divider, Title, Button } from 'react-native-paper';
 import Colors from '../../data/constants/Colors';
 import CartItem from './CartItem';
 
@@ -11,7 +11,7 @@ export default props => {
         <View style={styles.screen}>
             <Text>2 item(s) in your bag</Text>
             <CartItem />
-            {/* <CartItem /> */}
+            <CartItem />
             <View style={styles.cost}>
                 <Text style={styles.costText}>Total MRP</Text>
                 <Text style={styles.costValue}>$2798</Text>
@@ -30,7 +30,7 @@ export default props => {
 }
 
 const styles = StyleSheet.create({
-    screen: {},
+    screen: {flex: 1},
     cost: {
         marginHorizontal: 30,
         flexDirection: 'row',
