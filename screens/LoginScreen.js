@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     logoArea: {
-        height: 450,
+        height: 350,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: Colors.primary

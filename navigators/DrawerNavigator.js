@@ -29,7 +29,8 @@ export default function App() {
                 activeTintColor: Colors.primary
             }}
         >
-            <Drawer.Screen name="Home" component={TabNavigator} options={{
+            <Drawer.Screen name="HomeStack" component={TabNavigator} options={{
+                title: 'Home',
                 drawerIcon: NavigationIcons.HomeIcon
             }} />
             <Drawer.Screen name="Settings" component={SettingScreen} options={{
