@@ -7,6 +7,8 @@ import LoginScreen from '../screens/LoginScreen';
 import CustomDrawerContent from '../components/common/CustomDrawerContent';
 import NavigationIcons from '../components/common/NavigationIcons';
 import Colors from '../data/constants/Colors';
+import PushScreen from '../screens/PushScreen';
+import MapViewScreen from '../screens/MapViewScreen';
 
 
 function SettingScreen({ navigation }) {
@@ -29,7 +31,7 @@ export default function App() {
                 activeTintColor: Colors.primary
             }}
         >
-            <Drawer.Screen name="HomeStack" component={TabNavigator} options={{
+            <Drawer.Screen name="HomeTab" component={TabNavigator} options={{
                 title: 'Home',
                 drawerIcon: NavigationIcons.HomeIcon
             }} />
@@ -38,6 +40,14 @@ export default function App() {
             }} />
             <Drawer.Screen name="Login" component={LoginScreen} options={{
                 title: 'Account',
+                drawerIcon: NavigationIcons.PersonIcon
+            }} />
+            <Drawer.Screen name="Push" component={ PushScreen } options={{
+                title: 'Push',
+                drawerIcon: NavigationIcons.PersonIcon
+            }} />
+            <Drawer.Screen name="MapView" component={ MapViewScreen } options={{
+                title: 'Map',
                 drawerIcon: NavigationIcons.PersonIcon
             }} />
         </Drawer.Navigator>

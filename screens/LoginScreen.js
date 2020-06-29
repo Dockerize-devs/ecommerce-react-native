@@ -39,7 +39,7 @@ export default props => {
                             <Button
                                 mode="contained"
                                 style={styles.loginButton}
-                                onPress={() => props.navigation.navigate('Home')}
+                                onPress={() => props.navigation.navigate('HomeTab')}
                             >
                                 Login
                             </Button>
