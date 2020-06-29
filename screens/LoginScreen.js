@@ -1,15 +1,41 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TextInput, Card, Title, Button, Text } from 'react-native-paper';
 import { StyleSheet, View, SafeAreaView, StatusBar } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '../data/constants/Colors';
+import { isUserLoggedIn, login } from '../services/AuthService';
 
 export default props => {
+    // const [isLoggedIn, setIsLoggedIn] = useState(isUserLoggedIn())
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     useEffect(
         React.useCallback(() => {
             StatusBar.setBarStyle('light-content');
         }, [])
     );
+
+    useEffect(() => {
+        const fn = async () => {
+            if (await isUserLoggedIn()) {
+                props.navigation.navigate('HomeTab')
+            }
+        }
+        fn()
+    });
+    const onEmailChange = value => setEmail(value);
+    const onPasswordChange = value => setPassword(value);
+
+    const onLogin = async () => {
+        const success = await login({email, password})
+        console.log('SUCCESS', success)
+        if (success) {
+            props.navigation.navigate('HomeTab')
+        } else {
+            alert('wrong user name or password!')
+        }
+    }
     return (
         <View style={styles.screen}>
             <View style={styles.logoArea}>
@@ -28,18 +54,23 @@ export default props => {
                             style={styles.textInput}
                             label='Email'
                             placeholder="example@example.com"
+                            value={email}
+                            onChangeText={onEmailChange}
                         />
                         <TextInput
                             secureTextEntry={true}
                             mode='flat'
                             style={styles.textInput}
                             label='Password'
+                            value={password}
+                            onChangeText={onPasswordChange}
+
                         />
                         <View style={styles.buttonContainer}>
                             <Button
                                 mode="contained"
                                 style={styles.loginButton}
-                                onPress={() => props.navigation.navigate('HomeTab')}
+                                onPress={onLogin}
                             >
                                 Login
                             </Button>

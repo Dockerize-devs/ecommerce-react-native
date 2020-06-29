@@ -26,7 +26,7 @@ const Drawer = createDrawerNavigator();
 export default function App() {
     return (
         <Drawer.Navigator
-            initialRouteName="MapView"
+            initialRouteName="Login"
             drawerContent={props => <CustomDrawerContent {...props} />}
             drawerContentOptions={{
                 activeTintColor: Colors.primary
