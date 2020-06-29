@@ -9,6 +9,7 @@ import NavigationIcons from '../components/common/NavigationIcons';
 import Colors from '../data/constants/Colors';
 import PushScreen from '../screens/PushScreen';
 import MapViewScreen from '../screens/MapViewScreen';
+import CustomTiles from '../screens/MapTestScreen';
 
 
 function SettingScreen({ navigation }) {
@@ -25,7 +26,7 @@ const Drawer = createDrawerNavigator();
 export default function App() {
     return (
         <Drawer.Navigator
-            initialRouteName="Login"
+            initialRouteName="MapView"
             drawerContent={props => <CustomDrawerContent {...props} />}
             drawerContentOptions={{
                 activeTintColor: Colors.primary
@@ -48,6 +49,10 @@ export default function App() {
             }} />
             <Drawer.Screen name="MapView" component={ MapViewScreen } options={{
                 title: 'Map',
+                drawerIcon: NavigationIcons.PersonIcon
+            }} />
+            <Drawer.Screen name="MapTest" component={ CustomTiles } options={{
+                title: 'TestMap',
                 drawerIcon: NavigationIcons.PersonIcon
             }} />
         </Drawer.Navigator>
