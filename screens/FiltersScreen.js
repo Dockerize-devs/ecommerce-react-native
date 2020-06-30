@@ -5,7 +5,7 @@ import Colors from '../data/constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 import AppTitle from '../components/typography/AppTitle';
 import { useSelector, useDispatch } from 'react-redux';
-import { SORT_BY_MOST_POPULAR, SORT_BY_NEWEST, SORT_BY_LOWEST_PRICE, SORT_BY_HIGHEST_PRICE, SORT_BY_BIGGEST_SAVING } from '../models/ProductFilters';
+import ProductFilters, { SORT_BY_MOST_POPULAR, SORT_BY_NEWEST, SORT_BY_LOWEST_PRICE, SORT_BY_HIGHEST_PRICE, SORT_BY_BIGGEST_SAVING } from '../models/ProductFilters';
 import { filtersUpdated } from '../store/actions/productAction';
 
 
@@ -34,6 +34,11 @@ export default props => {
     const dispatch = useDispatch();
 
     const filters = useSelector(state => state.product.filters);
+
+    const onClearFilter =  () => {
+        const filters = new ProductFilters();
+        dispatch(filtersUpdated(filters));
+    }
     const onSortByChange = sort => {
         let changedFilters = { ...filters }
         changedFilters.sort_by = sort;
@@ -54,7 +59,7 @@ export default props => {
         <View style={styles.screen}>
             <View style={styles.headerContainer}>
                 <AppTitle style={styles.headerText}>Filters for sale</AppTitle>
-                <Button color={Colors.primary}>Clear  <Ionicons name='ios-backspace' size={15} /> </Button>
+                <Button color={Colors.primary} onPress={onClearFilter}>Clear  <Ionicons name='ios-backspace' size={15} /> </Button>
             </View>
             <View style={styles.filtersContainer}>
                 <View style={styles.filter}>
