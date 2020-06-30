@@ -35,7 +35,6 @@ export default {
         if(filters.price) {
             products = products.filter(p => p.price_tag === filters.price)
         }
-        console.log(filters)
         if(filters.review && filters.review !== 'any') {
             products = products.filter(p => p.average_review_score >= filters.review)
         }

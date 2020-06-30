@@ -3,9 +3,17 @@ import { TextInput, Card, Title, Button, Text } from 'react-native-paper';
 import { StyleSheet, View, SafeAreaView, StatusBar } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '../data/constants/Colors';
-import { isUserLoggedIn, login } from '../services/AuthService';
+import { login } from '../services/AuthService';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateAuthStatusAsync } from '../store/reducers/authReducer';
+import { updateAuthStatus } from '../store/actions/authAction';
 
 export default props => {
+
+    const isUserLoggedIn = useSelector(state => state.auth.isUserLoggedIn);
+    const dispatch = useDispatch();
+
+    console.log('LoginScreen Status', isUserLoggedIn)
     // const [isLoggedIn, setIsLoggedIn] = useState(isUserLoggedIn())
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -15,23 +23,32 @@ export default props => {
             StatusBar.setBarStyle('light-content');
         }, [])
     );
+    useEffect(() => {
+        dispatch(updateAuthStatusAsync())
+    }, []);
 
     useEffect(() => {
-        const fn = async () => {
-            if (await isUserLoggedIn()) {
-                props.navigation.navigate('HomeTab')
-            }
+
+        // const fn = async () => {
+        //     if (await isUserLoggedIn()) {
+        //         props.navigation.navigate('HomeTab')
+        //     }
+        // }
+        // fn()
+        if (isUserLoggedIn) {
+            props.navigation.navigate('HomeTab')
         }
-        fn()
-    });
+
+    }, [isUserLoggedIn]);
     const onEmailChange = value => setEmail(value);
     const onPasswordChange = value => setPassword(value);
 
     const onLogin = async () => {
-        const success = await login({email, password})
-        console.log('SUCCESS', success)
+        const success = await login({ email, password })
+        console.log('SUCCESS', success, isUserLoggedIn)
         if (success) {
-            props.navigation.navigate('HomeTab')
+            // props.navigation.navigate('HomeTab')
+            dispatch(updateAuthStatus(true))
         } else {
             alert('wrong user name or password!')
         }
