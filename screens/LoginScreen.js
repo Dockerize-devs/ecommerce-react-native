@@ -7,6 +7,7 @@ import { login } from '../services/AuthService';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateAuthStatusAsync } from '../store/reducers/authReducer';
 import { updateAuthStatus } from '../store/actions/authAction';
+import { useFocusEffect } from '@react-navigation/native';
 
 export default props => {
 
@@ -23,9 +24,18 @@ export default props => {
             StatusBar.setBarStyle('light-content');
         }, [])
     );
-    useEffect(() => {
-        dispatch(updateAuthStatusAsync())
-    }, []);
+
+    useFocusEffect(
+        React.useCallback(() => {
+            dispatch(updateAuthStatusAsync())
+            checkIfLogin()
+
+            return () => {
+                // Do something when the screen is unfocused
+                // Useful for cleanup functions
+            };
+        }, [])
+    );
 
     useEffect(() => {
 
@@ -35,11 +45,15 @@ export default props => {
         //     }
         // }
         // fn()
+        checkIfLogin()
+
+    }, [isUserLoggedIn]);
+
+    const checkIfLogin = () => {
         if (isUserLoggedIn) {
             props.navigation.navigate('HomeTab')
         }
-
-    }, [isUserLoggedIn]);
+    }
     const onEmailChange = value => setEmail(value);
     const onPasswordChange = value => setPassword(value);
 
