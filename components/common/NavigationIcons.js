@@ -8,6 +8,9 @@ export const PersonIcon = ({ color, size }) => <Ionicons name='ios-person' size=
 export const WishlistIcon = ({ color, size }) => <Ionicons name='ios-heart' size={size} color={color} />
 export const CartIcon = ({ color, size }) => <Ionicons name='ios-cart' size={size} color={color} />
 export const SettingsIcon = ({ color, size }) => <Ionicons name='ios-settings' size={size} color={color} />
+export const MapIcon = ({ color, size }) => <Ionicons name='ios-map' size={size} color={color} />
+export const ContactsIcon = ({ color, size }) => <Ionicons name='ios-contacts' size={size} color={color} />
+export const ImageIcon = ({ color, size }) => <Ionicons name='ios-image' size={size} color={color} />
 
 export default {
     HomeIcon,
@@ -15,5 +18,8 @@ export default {
     PersonIcon,
     WishlistIcon,
     CartIcon,
-    SettingsIcon
+    SettingsIcon,
+    MapIcon,
+    ImageIcon,
+    ContactsIcon
 }

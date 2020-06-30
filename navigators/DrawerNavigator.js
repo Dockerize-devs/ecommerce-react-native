@@ -47,19 +47,19 @@ export default function App() {
             }} />
             <Drawer.Screen name="Push" component={ PushScreen } options={{
                 title: 'Push',
-                drawerIcon: NavigationIcons.PersonIcon
+                drawerIcon: NavigationIcons.NotificationIcon
             }} />
             <Drawer.Screen name="MapView" component={ MapViewScreen } options={{
                 title: 'Map',
-                drawerIcon: NavigationIcons.PersonIcon
+                drawerIcon: NavigationIcons.MapIcon
             }} />
             <Drawer.Screen name="Picker" component={ Picker } options={{
                 title: 'Picker',
-                drawerIcon: NavigationIcons.PersonIcon
+                drawerIcon: NavigationIcons.ImageIcon
             }} />
             <Drawer.Screen name="Contacts" component={ ContactScreen } options={{
                 title: 'Contacts',
-                drawerIcon: NavigationIcons.PersonIcon
+                drawerIcon: NavigationIcons.ContactsIcon
             }} />
         </Drawer.Navigator>
     );
