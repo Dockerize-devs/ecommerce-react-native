@@ -10,6 +10,7 @@ import Colors from '../data/constants/Colors';
 import PushScreen from '../screens/PushScreen';
 import MapViewScreen from '../screens/MapViewScreen';
 import CustomTiles from '../screens/MapTestScreen';
+import Picker from '../screens/ImagePicker';
 
 
 function SettingScreen({ navigation }) {
@@ -51,8 +52,8 @@ export default function App() {
                 title: 'Map',
                 drawerIcon: NavigationIcons.PersonIcon
             }} />
-            <Drawer.Screen name="MapTest" component={ CustomTiles } options={{
-                title: 'TestMap',
+            <Drawer.Screen name="Picker" component={ Picker } options={{
+                title: 'Picker',
                 drawerIcon: NavigationIcons.PersonIcon
             }} />
         </Drawer.Navigator>
