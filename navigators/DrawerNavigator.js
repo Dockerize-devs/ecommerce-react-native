@@ -11,6 +11,7 @@ import PushScreen from '../screens/PushScreen';
 import MapViewScreen from '../screens/MapViewScreen';
 import CustomTiles from '../screens/MapTestScreen';
 import Picker from '../screens/ImagePicker';
+import ContactScreen from '../screens/ContactScreen';
 
 
 function SettingScreen({ navigation }) {
@@ -54,6 +55,10 @@ export default function App() {
             }} />
             <Drawer.Screen name="Picker" component={ Picker } options={{
                 title: 'Picker',
+                drawerIcon: NavigationIcons.PersonIcon
+            }} />
+            <Drawer.Screen name="Contacts" component={ ContactScreen } options={{
+                title: 'Contacts',
                 drawerIcon: NavigationIcons.PersonIcon
             }} />
         </Drawer.Navigator>
