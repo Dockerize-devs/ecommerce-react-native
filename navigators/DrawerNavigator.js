@@ -41,25 +41,25 @@ export default function App() {
             <Drawer.Screen name="Settings" component={SettingScreen} options={{
                 drawerIcon: NavigationIcons.SettingsIcon
             }} />
-            <Drawer.Screen name="Login" component={LoginScreen} options={{
-                title: 'Account',
-                drawerIcon: NavigationIcons.PersonIcon
-            }} />
-            <Drawer.Screen name="Push" component={ PushScreen } options={{
+            <Drawer.Screen name="Push" component={PushScreen} options={{
                 title: 'Push',
                 drawerIcon: NavigationIcons.NotificationIcon
             }} />
-            <Drawer.Screen name="MapView" component={ MapViewScreen } options={{
+            <Drawer.Screen name="MapView" component={MapViewScreen} options={{
                 title: 'Map',
                 drawerIcon: NavigationIcons.MapIcon
             }} />
-            <Drawer.Screen name="Picker" component={ Picker } options={{
+            <Drawer.Screen name="Picker" component={Picker} options={{
                 title: 'Picker',
                 drawerIcon: NavigationIcons.ImageIcon
             }} />
-            <Drawer.Screen name="Contacts" component={ ContactScreen } options={{
+            <Drawer.Screen name="Contacts" component={ContactScreen} options={{
                 title: 'Contacts',
                 drawerIcon: NavigationIcons.ContactsIcon
+            }} />
+            <Drawer.Screen name="Login" component={LoginScreen} options={{
+                title: 'Account',
+                drawerIcon: NavigationIcons.PersonIcon
             }} />
         </Drawer.Navigator>
     );
@@ -68,5 +68,5 @@ export default function App() {
 export const navigationRef = React.createRef();
 
 export function navigate(name, params) {
-  navigationRef.current?.navigate(name, params);
+    navigationRef.current?.navigate(name, params);
 }
