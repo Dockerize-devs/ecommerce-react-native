@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import DrawerNavigator from './DrawerNavigator';
+import DrawerNavigator, { navigationRef } from './DrawerNavigator';
+
 
 export default () =>  {
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
         <DrawerNavigator />
     </NavigationContainer>
   );

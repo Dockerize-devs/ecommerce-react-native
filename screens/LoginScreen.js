@@ -25,17 +25,21 @@ export default props => {
         }, [])
     );
 
-    useFocusEffect(
-        React.useCallback(() => {
-            dispatch(updateAuthStatusAsync())
-            checkIfLogin()
+    // useFocusEffect(
+    //     React.useCallback(() => {
+    //         dispatch(updateAuthStatusAsync())
+    //         console.log(isUserLoggedIn)
+    //         checkIfLogin()
 
-            return () => {
-                // Do something when the screen is unfocused
-                // Useful for cleanup functions
-            };
-        }, [])
-    );
+    //         return () => {
+    //             // Do something when the screen is unfocused
+    //             // Useful for cleanup functions
+    //         };
+    //     }, [])
+    // );
+    useEffect(() => {
+        dispatch(updateAuthStatusAsync())
+    }, [])
 
     useEffect(() => {
 
@@ -63,6 +67,7 @@ export default props => {
         if (success) {
             // props.navigation.navigate('HomeTab')
             dispatch(updateAuthStatus(true))
+            props.navigation.navigate('HomeTab')
         } else {
             alert('wrong user name or password!')
         }
